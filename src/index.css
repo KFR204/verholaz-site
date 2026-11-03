@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Manrope", system-ui, "Segoe UI", Roboto, sans-serif;
+
+  --color-ink: #10141b;
+  --color-ink-2: #171d27;
+  --color-ink-3: #202837;
+  --color-line: #2a3242;
+  --color-safety: #ff7a1a;
+  --color-safety-2: #ffb020;
+  --color-paper: #f6f4ef;
+  --color-muted: #8b94a3;
+
+  --animate-float: float 4.5s ease-in-out infinite;
+  --animate-float-slow: float 6.5s ease-in-out infinite;
+  --animate-wave: wave 3.2s ease-in-out infinite;
+  --animate-sway: sway 5s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@keyframes wave {
+  0%,
+  60%,
+  100% {
+    transform: rotate(0deg);
+  }
+  70% {
+    transform: rotate(5deg);
+  }
+  80% {
+    transform: rotate(-4deg);
+  }
+  90% {
+    transform: rotate(2.5deg);
+  }
+}
+
+@keyframes sway {
+  0%,
+  100% {
+    transform: rotate(-2deg) translateY(0);
+  }
+  50% {
+    transform: rotate(2deg) translateY(-8px);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--color-ink);
+  color: var(--color-paper);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.diag-stripes {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(255, 122, 26, 0.06) 0,
+    rgba(255, 122, 26, 0.06) 2px,
+    transparent 2px,
+    transparent 26px
+  );
+}
+
+.hazard-stripes {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--color-safety) 0,
+    var(--color-safety) 14px,
+    var(--color-ink) 14px,
+    var(--color-ink) 28px
+  );
+}
